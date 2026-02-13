@@ -28,7 +28,7 @@ jobs:
         id: auth
         uses: 'google-github-actions/auth@v2'
         with:
-          token_format: 'access_token'
+          project_id: '${{ env.PROJECT_ID }}'
           workload_identity_provider: '${{ secrets.WIF_PROVIDER }}'
 
       # gcloudコマンドのセットアップ (ここを追加)
@@ -36,6 +36,7 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v2'
         with:
           version: '>= 363.0.0'
+          project_id: '${{ env.PROJECT_ID }}'
 
       # Cloud Build にビルドとプッシュを依頼 (ここを変更)
       # ローカル(GitHub Actions)のソースをGCPにアップロードし、Cloud Build上でビルド＆プッシュします
