@@ -6,10 +6,10 @@ on:
       - main
 
 env:
-  PROJECT_ID: ex-ai-training # 自身のプロジェクトIDに書き換え
+  PROJECT_ID: ex-ai-training-program # 自身のプロジェクトIDに書き換え
   GAR_LOCATION: asia-northeast1
   REPOSITORY: day3-1-ropo-hs20260213  #自身のarのレジストリ
-  SERVICE: cloud-run-microservice-template-python-hs20260213 #自身のcloud runのサービス名
+  SERVICE: day3-1-ropo-hs20260213 #自身のcloud runのサービス名
   REGION: asia-northeast1
 
 jobs:
@@ -23,6 +23,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       # Direct Workload Identity Federationによる認証
       - name: Google Auth
         id: auth
@@ -61,3 +62,4 @@ jobs:
 
       - name: Show Output
         run: echo ${{ steps.deploy.outputs.url }}
+
